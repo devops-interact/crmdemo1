@@ -49,8 +49,8 @@ RUN mkdir -p /app/.local-storage && chown -R 1000:1000 /app
 USER 1000
 
 # Cloud Run sets PORT automatically, default to 8080
-ENV NODE_PORT=${PORT:-8080}
-EXPOSE ${PORT:-8080}
+# PORT will be available at runtime, we'll pass it as NODE_PORT
+EXPOSE 8080
 
-CMD ["node", "dist/src/main"]
+CMD ["sh", "-c", "NODE_PORT=${PORT:-8080} node dist/src/main"]
 
