@@ -41,8 +41,16 @@ export default defineConfig(() => {
   return {
     root: __dirname,
     cacheDir: '../../node_modules/.vite/packages/twenty-shared',
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
     plugins: [
-      tsconfigPaths(),
+      tsconfigPaths({
+        root: __dirname,
+        projects: [tsConfigPath],
+      }),
       dts({ entryRoot: 'src', tsconfigPath: tsConfigPath }),
     ],
     build: {
@@ -63,6 +71,10 @@ export default defineConfig(() => {
             entryFileNames: (chunk) => entryFileNames(chunk, 'cjs'),
           },
         ],
+      },
+      commonjsOptions: {
+        include: [/node_modules/],
+        transformMixedEsModules: true,
       },
     },
     logLevel: 'warn',

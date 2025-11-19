@@ -4,8 +4,8 @@ import { isMultiWorkspaceEnabledState } from '@/client-config/states/isMultiWork
 import { useIsCurrentLocationOnDefaultDomain } from '@/domain-manager/hooks/useIsCurrentLocationOnDefaultDomain';
 import { useOrigin } from '@/domain-manager/hooks/useOrigin';
 import { useRedirectToDefaultDomain } from '@/domain-manager/hooks/useRedirectToDefaultDomain';
-import { workspaceAuthProvidersState } from '@/workspace/states/workspaceAuthProvidersState';
 import { workspaceAuthBypassProvidersState } from '@/workspace/states/workspaceAuthBypassProvidersState';
+import { workspaceAuthProvidersState } from '@/workspace/states/workspaceAuthProvidersState';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isDefined } from 'twenty-shared/utils';
 import { useGetPublicWorkspaceDataByDomainQuery } from '~/generated-metadata/graphql';

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
 
 import { readFile } from 'fs/promises';
-import { join } from 'path';
+import { join, sep } from 'path';
 
 import { DataSource } from 'typeorm';
 
@@ -366,7 +366,8 @@ export class DevSeederDataService {
   private async seedAttachmentFiles(workspaceId: string): Promise<void> {
     // Files are copied to dist/assets during build via nest-cli.json
     // The pattern **/dev-seeder/data/sample-files/** preserves the full path
-    const IS_BUILT = __dirname.includes('/dist/');
+    const IS_BUILT =
+      __dirname.includes('/dist/') || __dirname.includes(`${sep}dist${sep}`);
     const sampleFilesDir = IS_BUILT
       ? join(
           __dirname,

@@ -21,3 +21,17 @@ export const REACT_APP_SERVER_BASE_URL =
   window._env_?.REACT_APP_SERVER_BASE_URL ||
   process.env.REACT_APP_SERVER_BASE_URL ||
   getDefaultUrl();
+
+export const GUEST_USER_EMAIL =
+  window._env_?.VITE_GUEST_EMAIL ||
+  process.env.VITE_GUEST_EMAIL ||
+  '';
+
+export const GUEST_USER_PASSWORD =
+  window._env_?.VITE_GUEST_PASSWORD ||
+  process.env.VITE_GUEST_PASSWORD ||
+  '';
+
+export const IS_GUEST_AUTO_LOGIN_ENABLED =
+  window._env_?.VITE_GUEST_AUTO_LOGIN === 'true' ||
+  process.env.VITE_GUEST_AUTO_LOGIN === 'true';

@@ -1,3 +1,4 @@
+import { WelcomeLanding } from '@/auth/components/WelcomeLanding';
 import { useSignInUp } from '@/auth/sign-in-up/hooks/useSignInUp';
 import { useSignInUpForm } from '@/auth/sign-in-up/hooks/useSignInUpForm';
 import {
@@ -191,6 +192,16 @@ export const SignInUp = () => {
     signInUpStep,
     workspacePublicData,
   ]);
+
+  const shouldShowWelcomeLanding =
+    signInUpStep === SignInUpStep.Init &&
+    !isDefined(workspaceInviteHash) &&
+    !isOnAWorkspace &&
+    isDefaultDomain;
+
+  if (shouldShowWelcomeLanding) {
+    return <WelcomeLanding />;
+  }
 
   if (signInUpStep === SignInUpStep.EmailVerification) {
     return (
