@@ -43,17 +43,18 @@ WORKDIR /app/packages/twenty-server
 COPY --from=build /app /app
 COPY --from=build /app/packages/twenty-server /app/packages/twenty-server
 
+# Copy entrypoint script
+COPY packages/twenty-server/entrypoint.sh /app/packages/twenty-server/entrypoint.sh
+
 # Create storage directory
-RUN mkdir -p /app/.local-storage && chown -R 1000:1000 /app
+RUN mkdir -p /app/.local-storage && chown -R 1000:1000 /app && \
+    chmod +x /app/packages/twenty-server/entrypoint.sh
 
 USER 1000
 
 # Cloud Run sets PORT automatically, default to 8080
-# PORT will be available at runtime, we'll pass it as NODE_PORT
 EXPOSE 8080
 
-# Cloud Run sets PORT at runtime, we need to pass it as NODE_PORT
-# Using exec to replace shell process with Node.js (better signal handling)
-# Using 2>&1 to redirect stderr to stdout so errors appear in logs
-CMD ["sh", "-c", "NODE_PORT=${PORT:-8080} exec node dist/src/main 2>&1"]
+# Use entrypoint script for better error visibility
+CMD ["/app/packages/twenty-server/entrypoint.sh"]
 
