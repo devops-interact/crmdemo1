@@ -106,8 +106,8 @@ export const Authorize = () => {
       <StyledCardWrapper>
         <StyledAppsContainer>
           <img
-            src="/images/integrations/twenty-logo.svg"
-            alt="twenty-icon"
+            src="/branding/abcorp-logo.png"
+            alt="AB Corp"
             height={40}
             width={40}
           />

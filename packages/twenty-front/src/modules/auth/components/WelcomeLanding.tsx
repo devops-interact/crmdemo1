@@ -104,7 +104,7 @@ export const WelcomeLanding = () => {
   return (
     <StyledContainer>
       <StyledLogo
-        src="/branding/abcorp-logo.svg"
+        src="/branding/abcorp-logo.png"
         alt={t`Company logo`}
         draggable={false}
       />

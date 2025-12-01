@@ -43,11 +43,10 @@ const StyledSecondaryLogoContainer = styled.div`
   width: ${({ theme }) => theme.spacing(7)};
 `;
 
-const StyledPrimaryLogo = styled.div<{ src: string }>`
-  background: url(${(props) => props.src});
-  background-size: cover;
+const StyledPrimaryLogo = styled.img`
   height: 100%;
   width: 100%;
+  object-fit: contain;
 `;
 
 export const Logo = ({
@@ -57,7 +56,7 @@ export const Logo = ({
   onClick,
 }: LogoProps) => {
   const { redirectToDefaultDomain } = useRedirectToDefaultDomain();
-  const defaultPrimaryLogoUrl = `${window.location.origin}/branding/abcorp-logo.svg`;
+  const defaultPrimaryLogoUrl = `${window.location.origin}/branding/abcorp-logo.png`;
 
   const primaryLogoUrl = getImageAbsoluteURI({
     imageUrl: primaryLogo ?? defaultPrimaryLogoUrl,
@@ -80,10 +79,10 @@ export const Logo = ({
           to={AppPath.SignInUp}
           onClick={redirectToDefaultDomain}
         >
-          <StyledPrimaryLogo src={primaryLogoUrl} />
+          <StyledPrimaryLogo src={primaryLogoUrl} alt="AB Corp" />
         </UndecoratedLink>
       ) : (
-        <StyledPrimaryLogo src={primaryLogoUrl} />
+        <StyledPrimaryLogo src={primaryLogoUrl} alt="AB Corp" />
       )}
       {isDefined(secondaryLogoUrl) ? (
         <StyledSecondaryLogoContainer>
