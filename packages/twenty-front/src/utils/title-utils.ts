@@ -22,38 +22,62 @@ const getPathnameOrPrefix = (pathname: string) => {
   return pathname;
 };
 
+const appendBrandName = (title: string): string => {
+  // Don't append if already contains AB Corp or is empty
+  if (!title || title.includes('AB Corp')) {
+    return title || 'AB Corp';
+  }
+  return `${title} | AB Corp`;
+};
+
 export const getPageTitleFromPath = (pathname: string): string => {
   const pathnameOrPrefix = getPathnameOrPrefix(pathname);
+  let title: string;
   switch (pathnameOrPrefix) {
     case AppPath.Verify:
-      return t`Verify`;
+      title = t`Verify`;
+      break;
     case AppPath.SignInUp:
-      return t`Sign in or Create an account`;
+      title = t`Sign in or Create an account`;
+      break;
     case AppPath.Invite:
-      return t`Invite`;
+      title = t`Invite`;
+      break;
     case AppPath.CreateWorkspace:
-      return t`Create Workspace`;
+      title = t`Create Workspace`;
+      break;
     case AppPath.CreateProfile:
-      return t`Create Profile`;
+      title = t`Create Profile`;
+      break;
     case SettingsPathPrefixes.Experience:
-      return t`Experience - Settings`;
+      title = t`Experience - Settings`;
+      break;
     case SettingsPathPrefixes.Accounts:
-      return t`Account - Settings`;
+      title = t`Account - Settings`;
+      break;
     case SettingsPathPrefixes.Profile:
-      return t`Profile - Settings`;
+      title = t`Profile - Settings`;
+      break;
     case SettingsPathPrefixes.Members:
-      return t`Members - Settings`;
+      title = t`Members - Settings`;
+      break;
     case SettingsPathPrefixes.Objects:
-      return t`Data model - Settings`;
+      title = t`Data model - Settings`;
+      break;
     case SettingsPathPrefixes.ApiWebhooks:
-      return t`API Keys - Settings`;
+      title = t`API Keys - Settings`;
+      break;
     case SettingsPathPrefixes.ServerlessFunctions:
-      return t`Functions - Settings`;
+      title = t`Functions - Settings`;
+      break;
     case SettingsPathPrefixes.Integration:
-      return t`Integrations - Settings`;
+      title = t`Integrations - Settings`;
+      break;
     case SettingsPathPrefixes.General:
-      return t`General - Settings`;
+      title = t`General - Settings`;
+      break;
     default:
       return 'AB Corp';
   }
+  return appendBrandName(title);
 };

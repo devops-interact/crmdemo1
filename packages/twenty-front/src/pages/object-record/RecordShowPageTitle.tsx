@@ -29,8 +29,8 @@ export const RecordShowPageTitle = ({
     : '';
 
   const pageTitle = pageName.trim()
-    ? `${pageName} - ${objectMetadataItem.labelSingular}`
-    : objectMetadataItem.labelSingular;
+    ? `${pageName} - ${objectMetadataItem.labelSingular} | AB Corp`
+    : `${objectMetadataItem.labelSingular} | AB Corp`;
 
   return <PageTitle title={pageTitle} />;
 };

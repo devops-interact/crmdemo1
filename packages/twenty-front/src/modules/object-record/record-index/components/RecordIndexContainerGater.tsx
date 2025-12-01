@@ -96,7 +96,7 @@ export const RecordIndexContainerGater = () => {
                 instanceId: getActionMenuIdFromRecordIndexId(recordIndexId),
               }}
             >
-              <PageTitle title={objectMetadataItem.labelPlural} />
+              <PageTitle title={`${objectMetadataItem.labelPlural} | AB Corp`} />
               <RecordIndexPageHeader />
               <PageBody>
                 <StyledIndexContainer

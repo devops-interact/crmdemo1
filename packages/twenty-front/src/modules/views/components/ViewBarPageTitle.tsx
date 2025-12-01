@@ -16,8 +16,8 @@ export const ViewBarPageTitle = () => {
   const { objectMetadataItem } = useObjectMetadataItem({ objectNameSingular });
 
   const pageTitle = currentView?.name
-    ? `${currentView?.name} - ${objectMetadataItem.labelPlural}`
-    : objectMetadataItem.labelPlural;
+    ? `${currentView?.name} - ${objectMetadataItem.labelPlural} | AB Corp`
+    : `${objectMetadataItem.labelPlural} | AB Corp`;
 
   return <PageTitle title={pageTitle} />;
 };

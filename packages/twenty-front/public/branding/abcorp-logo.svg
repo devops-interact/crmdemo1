@@ -1,7 +1,18 @@
-<svg width="360" height="120" viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="360" height="120" fill="white"/>
-  <text x="50%" y="50%" fill="#111111" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="48" dominant-baseline="middle" text-anchor="middle">
-    AB Corp
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark green background -->
+  <rect width="120" height="120" fill="#1a5d3a" rx="8"/>
+
+  <!-- AB letters in light beige/off-white -->
+  <text
+    x="50%"
+    y="50%"
+    fill="#f5f5dc"
+    font-family="Arial, sans-serif"
+    font-weight="700"
+    font-size="48"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    letter-spacing="2">
+    AB
   </text>
 </svg>
-

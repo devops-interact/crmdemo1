@@ -61,11 +61,8 @@ const StandardContent = ({
   onClickOnLogo: () => void;
   workspaceInviteHash?: string | null;
 }) => {
-  // When there's an invitation, show Twenty logo as secondary logo
-  // Otherwise, show workspace logo if available
-  const secondaryLogo = isDefined(workspaceInviteHash)
-    ? '/images/integrations/twenty-logo.svg'
-    : workspacePublicData?.logo ?? null;
+  // Show workspace logo if available, but NEVER show Twenty logo
+  const secondaryLogo = workspacePublicData?.logo ?? null;
 
   return (
     <Modal.Content isVerticalCentered isHorizontalCentered>
