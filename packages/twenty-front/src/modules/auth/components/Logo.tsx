@@ -58,16 +58,32 @@ export const Logo = ({
   const { redirectToDefaultDomain } = useRedirectToDefaultDomain();
   const defaultPrimaryLogoUrl = `${window.location.origin}/branding/abcorp-logo.png`;
 
-  const primaryLogoUrl = getImageAbsoluteURI({
-    imageUrl: primaryLogo ?? defaultPrimaryLogoUrl,
-    baseUrl: REACT_APP_SERVER_BASE_URL,
-  });
+  // For static files in /public/, use the URL directly without getImageAbsoluteURI
+  // getImageAbsoluteURI is for server-uploaded files in /files/, not static assets
+  // Static files in /public/ are served directly at the root path
+  const getLogoUrl = (logo: string | null | undefined): string => {
+    if (!logo) return defaultPrimaryLogoUrl;
+    
+    // If it's already a full URL, use it directly
+    if (logo.startsWith('http://') || logo.startsWith('https://')) {
+      return logo;
+    }
+    
+    // If it starts with /, it's a static file - use it directly
+    if (logo.startsWith('/')) {
+      return `${window.location.origin}${logo}`;
+    }
+    
+    // Otherwise, it's a server-uploaded file - use getImageAbsoluteURI
+    return getImageAbsoluteURI({
+      imageUrl: logo,
+      baseUrl: REACT_APP_SERVER_BASE_URL,
+    });
+  };
 
+  const primaryLogoUrl = getLogoUrl(primaryLogo);
   const secondaryLogoUrl = isNonEmptyString(secondaryLogo)
-    ? getImageAbsoluteURI({
-        imageUrl: secondaryLogo,
-        baseUrl: REACT_APP_SERVER_BASE_URL,
-      })
+    ? getLogoUrl(secondaryLogo)
     : null;
 
   const isUsingDefaultLogo = !isDefined(primaryLogo);
