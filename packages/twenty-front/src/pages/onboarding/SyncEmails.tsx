@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Key } from 'ts-key-enum';
 
@@ -102,6 +102,14 @@ export const SyncEmails = () => {
     focusId: PageFocusId.SyncEmail,
     dependencies: [continueWithoutSync],
   });
+
+  // Automatically skip sync email step when component mounts
+  useEffect(() => {
+    const skipSync = async () => {
+      await continueWithoutSync();
+    };
+    skipSync();
+  }, [continueWithoutSync]);
 
   return (
     <Modal.Content isVerticalCentered isHorizontalCentered>

@@ -52,18 +52,26 @@ const StandardContent = ({
   signInUpStep,
   title,
   onClickOnLogo,
+  workspaceInviteHash,
 }: {
   workspacePublicData: PublicWorkspaceDataOutput | null;
   signInUpForm: JSX.Element | null;
   signInUpStep: SignInUpStep;
   title: string;
   onClickOnLogo: () => void;
+  workspaceInviteHash?: string | null;
 }) => {
+  // When there's an invitation, show Twenty logo as secondary logo
+  // Otherwise, show workspace logo if available
+  const secondaryLogo = isDefined(workspaceInviteHash)
+    ? '/images/integrations/twenty-logo.svg'
+    : workspacePublicData?.logo ?? null;
+
   return (
     <Modal.Content isVerticalCentered isHorizontalCentered>
       <AnimatedEaseIn>
         <Logo
-          secondaryLogo={workspacePublicData?.logo}
+          secondaryLogo={secondaryLogo}
           placeholder={workspacePublicData?.displayName}
           onClick={onClickOnLogo}
         />
@@ -218,6 +226,7 @@ export const SignInUp = () => {
       signInUpStep={signInUpStep}
       title={title}
       onClickOnLogo={onClickOnLogo}
+      workspaceInviteHash={workspaceInviteHash}
     />
   );
 };
