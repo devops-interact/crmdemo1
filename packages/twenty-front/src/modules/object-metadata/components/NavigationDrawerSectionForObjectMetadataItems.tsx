@@ -16,6 +16,7 @@ const ORDERED_MENU_OBJECTS: Array<{ nameSingular?: string; labelPlural?: string 
   { labelPlural: 'IMSS Servicios' }, // IMSS
   { labelPlural: 'Modalidad 40 Servicios' }, // Modalidad 40
   { labelPlural: 'Préstamos' }, // Préstamos
+  { labelPlural: 'Infonavit Servicios' }, // Infonavit Servicios
   { labelPlural: 'Altas patronales' }, // Altas patronales
   { labelPlural: 'ISSSTE Servicios' }, // ISSSTE
   { labelPlural: 'Asistencias' }, // Asistencias
