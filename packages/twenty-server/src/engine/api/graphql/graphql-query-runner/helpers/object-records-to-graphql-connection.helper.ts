@@ -350,8 +350,18 @@ export class ObjectRecordsToGraphqlConnectionHelper {
           );
         }
 
+        // Interceptar nulls en campos FullName (firstName y lastName)
+        // Convertir null/undefined a string vacío para prevenir errores GraphQL
+        let processedValue = subFieldValue;
+        if (
+          fieldMetadata.type === FieldMetadataType.FULL_NAME &&
+          (subFieldKey === 'firstName' || subFieldKey === 'lastName')
+        ) {
+          processedValue = subFieldValue ?? '';
+        }
+
         acc[subFieldKey] = this.formatFieldValue(
-          subFieldValue,
+          processedValue,
           subFieldMetadata.type,
         );
 
