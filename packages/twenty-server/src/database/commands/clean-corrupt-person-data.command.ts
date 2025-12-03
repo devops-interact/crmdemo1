@@ -1,4 +1,6 @@
-import { Command } from 'nest-commander';
+import { Logger } from '@nestjs/common';
+
+import { Command, CommandRunner } from 'nest-commander';
 import { DataSource } from 'typeorm';
 
 import { AppDataSource } from 'src/database/typeorm/core/core.datasource';
@@ -7,9 +9,15 @@ import { AppDataSource } from 'src/database/typeorm/core/core.datasource';
   name: 'clean-corrupt-person-data',
   description: 'Clean corrupt person data (firstName or lastName null)',
 })
-export class CleanCorruptPersonDataCommand {
+export class CleanCorruptPersonDataCommand extends CommandRunner {
+  private readonly logger = new Logger(CleanCorruptPersonDataCommand.name);
+
+  constructor() {
+    super();
+  }
+
   async run(): Promise<void> {
-    console.log('🧹 Iniciando limpieza de datos corruptos en tabla person...');
+    this.logger.log('🧹 Iniciando limpieza de datos corruptos en tabla person...');
 
     const dataSource: DataSource = await AppDataSource.initialize();
 
@@ -25,10 +33,10 @@ export class CleanCorruptPersonDataCommand {
       `);
 
       const count = parseInt(countResult[0].count);
-      console.log(`\n📊 Registros con problemas encontrados: ${count}`);
+      this.logger.log(`\n📊 Registros con problemas encontrados: ${count}`);
 
       if (count === 0) {
-        console.log('✅ No hay registros corruptos. La base de datos está limpia.');
+        this.logger.log('✅ No hay registros corruptos. La base de datos está limpia.');
         await dataSource.destroy();
         process.exit(0);
       }
@@ -44,15 +52,15 @@ export class CleanCorruptPersonDataCommand {
         LIMIT 5
       `);
 
-      console.log('\n📋 Ejemplos de registros con problemas:');
+      this.logger.log('\n📋 Ejemplos de registros con problemas:');
       sampleResult.forEach((row: any, index: number) => {
-        console.log(
+        this.logger.log(
           `  ${index + 1}. ID: ${row.id}, Name: ${JSON.stringify(row.name)}, Email: ${row.email || 'N/A'}`,
         );
       });
 
       // Paso 3: Limpiar los datos
-      console.log('\n🧹 Limpiando datos corruptos...');
+      this.logger.log('\n🧹 Limpiando datos corruptos...');
 
       const updateResult = await dataSource.query(`
         UPDATE person
@@ -85,13 +93,13 @@ export class CleanCorruptPersonDataCommand {
            OR "name"->>'lastName' = ''
       `);
 
-      console.log(`✅ ${updateResult[1]} registros actualizados`);
+      this.logger.log(`✅ ${updateResult[1]} registros actualizados`);
 
       // Paso 4: Verificar que se limpiaron
       const verifyResult = await dataSource.query(`
         SELECT COUNT(*) as count
-        FROM person
-        WHERE "name"->>'firstName' IS NULL
+        FROM person 
+        WHERE "name"->>'firstName' IS NULL 
            OR "name"->>'lastName' IS NULL
            OR "name"->>'firstName' = ''
            OR "name"->>'lastName' = ''
@@ -100,20 +108,19 @@ export class CleanCorruptPersonDataCommand {
       const remaining = parseInt(verifyResult[0].count);
 
       if (remaining === 0) {
-        console.log(
+        this.logger.log(
           '\n✅ ¡Limpieza completada exitosamente! No quedan registros corruptos.',
         );
       } else {
-        console.log(`\n⚠️  Aún quedan ${remaining} registros con problemas.`);
+        this.logger.warn(`\n⚠️  Aún quedan ${remaining} registros con problemas.`);
       }
 
       await dataSource.destroy();
-      process.exit(0);
     } catch (error: any) {
-      console.error('❌ Error:', error.message);
-      console.error(error);
+      this.logger.error('❌ Error:', error.message);
+      this.logger.error(error);
       await dataSource.destroy();
-      process.exit(1);
+      throw error;
     }
   }
 }
