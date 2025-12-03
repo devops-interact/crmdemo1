@@ -9,6 +9,21 @@ import { NavigationDrawerSectionTitle } from '@/ui/navigation/navigation-drawer/
 import { useNavigationSection } from '@/ui/navigation/navigation-drawer/hooks/useNavigationSection';
 import { useRecoilValue } from 'recoil';
 
+// Orden completo de objetos en el menú lateral (estándar + personalizados)
+// Usa nameSingular para objetos estándar y labelPlural para objetos personalizados
+const ORDERED_MENU_OBJECTS: Array<{ nameSingular?: string; labelPlural?: string }> = [
+  { nameSingular: CoreObjectNameSingular.Person }, // Clientes
+  { labelPlural: 'IMSS Servicios' }, // IMSS
+  { labelPlural: 'Modalidad 40 Servicios' }, // Modalidad 40
+  { labelPlural: 'Préstamos' }, // Préstamos
+  { labelPlural: 'Altas patronales' }, // Altas patronales
+  { labelPlural: 'ISSSTE Servicios' }, // ISSSTE
+  { labelPlural: 'Asistencias' }, // Asistencias
+  { labelPlural: 'Legal Servicios' }, // Legal
+  { labelPlural: 'Tecnología Servicios' }, // Tecnología
+  { nameSingular: CoreObjectNameSingular.Task }, // Tareas
+];
+
 const ORDERED_STANDARD_OBJECTS: string[] = [
   CoreObjectNameSingular.Person,
   CoreObjectNameSingular.Company,
@@ -34,36 +49,66 @@ export const NavigationDrawerSectionForObjectMetadataItems = ({
 
   const { objectPermissionsByObjectMetadataId } = useObjectPermissions();
 
-  const sortedStandardObjectMetadataItems = [...objectMetadataItems]
-    .filter((item) => ORDERED_STANDARD_OBJECTS.includes(item.nameSingular))
-    .sort((objectMetadataItemA, objectMetadataItemB) => {
-      const indexA = ORDERED_STANDARD_OBJECTS.indexOf(
+  // Función helper para encontrar el índice de un objeto en el orden personalizado
+  const getMenuOrderIndex = (item: ObjectMetadataItem): number => {
+    return ORDERED_MENU_OBJECTS.findIndex((orderItem) => {
+      if (orderItem.nameSingular) {
+        return item.nameSingular === orderItem.nameSingular;
+      }
+      if (orderItem.labelPlural) {
+        return item.labelPlural === orderItem.labelPlural;
+      }
+      return false;
+    });
+  };
+
+  // Ordenar todos los objetos según el orden personalizado del menú
+  const sortedObjectMetadataItems = [...objectMetadataItems].sort(
+    (objectMetadataItemA, objectMetadataItemB) => {
+      const indexA = getMenuOrderIndex(objectMetadataItemA);
+      const indexB = getMenuOrderIndex(objectMetadataItemB);
+
+      // Si ambos están en el orden personalizado, usar ese orden
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+
+      // Si solo uno está en el orden personalizado, ponerlo primero
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+
+      // Si ninguno está en el orden personalizado:
+      // - Los objetos estándar se ordenan según ORDERED_STANDARD_OBJECTS
+      // - Los objetos personalizados se ordenan por fecha de creación
+      const isAStandard = ORDERED_STANDARD_OBJECTS.includes(
         objectMetadataItemA.nameSingular,
       );
-      const indexB = ORDERED_STANDARD_OBJECTS.indexOf(
+      const isBStandard = ORDERED_STANDARD_OBJECTS.includes(
         objectMetadataItemB.nameSingular,
       );
-      if (indexA === -1 || indexB === -1) {
-        return objectMetadataItemA.nameSingular.localeCompare(
+
+      if (isAStandard && isBStandard) {
+        const standardIndexA = ORDERED_STANDARD_OBJECTS.indexOf(
+          objectMetadataItemA.nameSingular,
+        );
+        const standardIndexB = ORDERED_STANDARD_OBJECTS.indexOf(
           objectMetadataItemB.nameSingular,
         );
+        return standardIndexA - standardIndexB;
       }
-      return indexA - indexB;
-    });
 
-  const sortedCustomObjectMetadataItems = [...objectMetadataItems]
-    .filter((item) => !ORDERED_STANDARD_OBJECTS.includes(item.nameSingular))
-    .sort((objectMetadataItemA, objectMetadataItemB) => {
+      if (isAStandard) return -1;
+      if (isBStandard) return 1;
+
+      // Ambos son personalizados, ordenar por fecha de creación
       return new Date(objectMetadataItemA.createdAt) <
         new Date(objectMetadataItemB.createdAt)
         ? 1
         : -1;
-    });
+    },
+  );
 
-  const objectMetadataItemsForNavigationItems = [
-    ...sortedStandardObjectMetadataItems,
-    ...sortedCustomObjectMetadataItems,
-  ];
+  const objectMetadataItemsForNavigationItems = sortedObjectMetadataItems;
 
   const objectMetadataItemsForNavigationItemsWithReadPermission =
     objectMetadataItemsForNavigationItems.filter(
