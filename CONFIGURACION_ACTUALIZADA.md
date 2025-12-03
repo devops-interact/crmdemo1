@@ -1,6 +1,6 @@
 # 🔧 Configuración Actualizada - Deploy Google Cloud
 
-## 📊 Situación Actual
+## 📊 Situación Actual.
 
 ### ✅ Lo que ya tienes:
 - **Cloud SQL**: IP privada `10.115.0.3` ✅
