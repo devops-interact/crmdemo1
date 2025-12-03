@@ -1,9 +1,8 @@
 import { Logger } from '@nestjs/common';
+import { InjectDataSource } from '@nestjs/typeorm';
 
 import { Command, CommandRunner } from 'nest-commander';
 import { DataSource } from 'typeorm';
-
-import { AppDataSource } from 'src/database/typeorm/core/core.datasource';
 
 @Command({
   name: 'clean-corrupt-person-data',
@@ -12,14 +11,17 @@ import { AppDataSource } from 'src/database/typeorm/core/core.datasource';
 export class CleanCorruptPersonDataCommand extends CommandRunner {
   private readonly logger = new Logger(CleanCorruptPersonDataCommand.name);
 
-  constructor() {
+  constructor(
+    @InjectDataSource()
+    private readonly coreDataSource: DataSource,
+  ) {
     super();
   }
 
   async run(): Promise<void> {
     this.logger.log('🧹 Iniciando limpieza de datos corruptos en tabla person...');
 
-    const dataSource: DataSource = await AppDataSource.initialize();
+    const dataSource = this.coreDataSource;
 
     try {
       // Paso 1: Verificar registros con problemas
@@ -37,7 +39,6 @@ export class CleanCorruptPersonDataCommand extends CommandRunner {
 
       if (count === 0) {
         this.logger.log('✅ No hay registros corruptos. La base de datos está limpia.');
-        await dataSource.destroy();
         process.exit(0);
       }
 
@@ -98,8 +99,8 @@ export class CleanCorruptPersonDataCommand extends CommandRunner {
       // Paso 4: Verificar que se limpiaron
       const verifyResult = await dataSource.query(`
         SELECT COUNT(*) as count
-        FROM person 
-        WHERE "name"->>'firstName' IS NULL 
+        FROM person
+        WHERE "name"->>'firstName' IS NULL
            OR "name"->>'lastName' IS NULL
            OR "name"->>'firstName' = ''
            OR "name"->>'lastName' = ''
@@ -115,11 +116,9 @@ export class CleanCorruptPersonDataCommand extends CommandRunner {
         this.logger.warn(`\n⚠️  Aún quedan ${remaining} registros con problemas.`);
       }
 
-      await dataSource.destroy();
     } catch (error: any) {
       this.logger.error('❌ Error:', error.message);
       this.logger.error(error);
-      await dataSource.destroy();
       throw error;
     }
   }
