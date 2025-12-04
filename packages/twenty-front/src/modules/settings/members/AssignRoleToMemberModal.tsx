@@ -79,7 +79,7 @@ type AssignRoleToMemberModalProps = {
 
 export const AssignRoleToMemberModal = ({
   modalId,
-  workspaceMemberId,
+  workspaceMemberId: _workspaceMemberId,
   currentRoleId,
   onConfirm,
   onClose,
@@ -91,12 +91,12 @@ export const AssignRoleToMemberModal = ({
 
   const { data: rolesData, loading } = useGetRolesQuery();
 
-  // Filtrar roles que pueden ser asignados a usuarios
-  const availableRoles =
-    rolesData?.getRoles?.filter((role) => role.canBeAssignedToUsers) ?? [];
+  // Mostrar todos los roles disponibles (sin filtrar por canBeAssignedToUsers)
+  // El backend validará si el rol puede ser asignado si es necesario
+  const availableRoles = rolesData?.getRoles ?? [];
 
   const handleConfirm = () => {
-    if (selectedRoleId) {
+    if (selectedRoleId !== undefined) {
       onConfirm(selectedRoleId);
       closeModal(modalId);
       onClose();
@@ -114,6 +114,7 @@ export const AssignRoleToMemberModal = ({
       onClose={handleClose}
       isClosable={true}
       size="medium"
+      dataGloballyPreventClickOutside={true}
     >
       <Modal.Header>
         <H1Title title={t`Assign Role`} fontColor={H1TitleFontColor.Primary} />
@@ -122,7 +123,9 @@ export const AssignRoleToMemberModal = ({
         {loading ? (
           <div>{t`Loading roles...`}</div>
         ) : availableRoles.length === 0 ? (
-          <div>{t`No roles available to assign`}</div>
+          <div>
+            {t`No roles available. Please create a role first in the Roles section.`}
+          </div>
         ) : (
           <StyledRoleList>
             {availableRoles.map((role) => (

@@ -112,6 +112,7 @@ export const SettingsWorkspaceMembers = () => {
   const { t } = useLingui();
   const { enqueueErrorSnackBar } = useSnackBar();
   const theme = useTheme();
+  const { openModal, closeModal } = useModal();
   const [workspaceMemberToDelete, setWorkspaceMemberToDelete] = useState<
     string | undefined
   >();
@@ -168,6 +169,9 @@ export const SettingsWorkspaceMembers = () => {
   };
 
   const handleAssignRole = (workspaceMember: WorkspaceMember) => {
+    // Cerrar cualquier otro modal abierto antes de abrir el modal de asignar rol
+    closeModal(WORKSPACE_MEMBER_DELETION_MODAL_ID);
+
     setWorkspaceMemberToAssignRole(workspaceMember);
     openModal(ASSIGN_ROLE_TO_MEMBER_MODAL_ID);
   };
@@ -312,8 +316,6 @@ export const SettingsWorkspaceMembers = () => {
       );
     });
   }, [workspaceMembers, searchFilter]);
-
-  const { openModal } = useModal();
 
   return (
     <SubMenuTopBarContainer
