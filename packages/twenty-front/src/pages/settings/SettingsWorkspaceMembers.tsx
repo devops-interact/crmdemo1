@@ -14,6 +14,7 @@ import { useDeleteOneRecord } from '@/object-record/hooks/useDeleteOneRecord';
 import { useFindManyRecords } from '@/object-record/hooks/useFindManyRecords';
 import { useImpersonationAuth } from '@/settings/admin-panel/hooks/useImpersonationAuth';
 import { SettingsPageContainer } from '@/settings/components/SettingsPageContainer';
+import { AssignRoleToMemberModal } from '@/settings/members/AssignRoleToMemberModal';
 import { ManageMembersDropdownMenu } from '@/settings/members/ManageMembersDropdownMenu';
 import { useSnackBar } from '@/ui/feedback/snack-bar-manager/hooks/useSnackBar';
 import { SettingsTextInput } from '@/ui/input/components/SettingsTextInput';
@@ -49,6 +50,7 @@ import { Section } from 'twenty-ui/layout';
 import {
   useGetWorkspaceInvitationsQuery,
   useImpersonateMutation,
+  useUpdateWorkspaceMemberRoleMutation,
 } from '~/generated-metadata/graphql';
 
 import { normalizeSearchText } from '~/utils/normalizeSearchText';
@@ -60,6 +62,7 @@ import { workspaceInvitationsState } from '../../modules/workspace-invitation/st
 
 export const WORKSPACE_MEMBER_DELETION_MODAL_ID =
   'workspace-member-deletion-modal';
+export const ASSIGN_ROLE_TO_MEMBER_MODAL_ID = 'assign-role-to-member-modal';
 
 const StyledButtonContainer = styled.div`
   align-items: center;
@@ -112,8 +115,11 @@ export const SettingsWorkspaceMembers = () => {
   const [workspaceMemberToDelete, setWorkspaceMemberToDelete] = useState<
     string | undefined
   >();
+  const [workspaceMemberToAssignRole, setWorkspaceMemberToAssignRole] =
+    useState<WorkspaceMember | undefined>();
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [impersonate] = useImpersonateMutation();
+  const [updateWorkspaceMemberRole] = useUpdateWorkspaceMemberRoleMutation();
   const { executeImpersonationAuth } = useImpersonationAuth();
   const [searchFilter, setSearchFilter] = useState('');
 
@@ -159,6 +165,38 @@ export const SettingsWorkspaceMembers = () => {
   const handleRemoveWorkspaceMember = async (workspaceMemberId: string) => {
     await deleteOneWorkspaceMember?.(workspaceMemberId);
     setWorkspaceMemberToDelete(undefined);
+  };
+
+  const handleAssignRole = (workspaceMember: WorkspaceMember) => {
+    setWorkspaceMemberToAssignRole(workspaceMember);
+    openModal(ASSIGN_ROLE_TO_MEMBER_MODAL_ID);
+  };
+
+  const handleConfirmAssignRole = async (roleId: string) => {
+    if (!workspaceMemberToAssignRole) {
+      return;
+    }
+
+    try {
+      await updateWorkspaceMemberRole({
+        variables: {
+          workspaceMemberId: workspaceMemberToAssignRole.id,
+          roleId,
+        },
+      });
+
+      // Apollo actualizará automáticamente el cache con los datos devueltos
+      setWorkspaceMemberToAssignRole(undefined);
+    } catch (error) {
+      enqueueErrorSnackBar({
+        message: t`Failed to assign role`,
+        apolloError: error instanceof ApolloError ? error : undefined,
+      });
+    }
+  };
+
+  const handleCloseAssignRoleModal = () => {
+    setWorkspaceMemberToAssignRole(undefined);
   };
 
   const handleImpersonate = async (targetWorkspaceMember: WorkspaceMember) => {
@@ -450,6 +488,7 @@ export const SettingsWorkspaceMembers = () => {
                             dropdownId={`workspace-member-actions-${workspaceMember.id}`}
                             workspaceMember={workspaceMember}
                             onImpersonate={handleImpersonate}
+                            onAssignRole={handleAssignRole}
                             onDelete={(id) => {
                               setWorkspaceMemberToDelete(id);
                               openModal(WORKSPACE_MEMBER_DELETION_MODAL_ID);
@@ -498,6 +537,17 @@ export const SettingsWorkspaceMembers = () => {
         }
         confirmButtonText={t`Delete account`}
       />
+      {workspaceMemberToAssignRole && (
+        <AssignRoleToMemberModal
+          modalId={ASSIGN_ROLE_TO_MEMBER_MODAL_ID}
+          workspaceMemberId={workspaceMemberToAssignRole.id}
+          currentRoleId={
+            workspaceMemberToAssignRole.roles?.[0]?.id ?? undefined
+          }
+          onConfirm={handleConfirmAssignRole}
+          onClose={handleCloseAssignRoleModal}
+        />
+      )}
     </SubMenuTopBarContainer>
   );
 };
