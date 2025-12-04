@@ -830,9 +830,9 @@ msgid "Aggregate"
 msgstr "집계"
 
 #. js-lingui-id: jsQZMk
+#: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAI.tsx
 #: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/utils/getActionHeaderTypeOrThrow.ts
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/modules/command-menu/pages/workflow/action/components/CommandMenuWorkflowSelectAction.tsx
@@ -1239,6 +1239,13 @@ msgstr "AI에게 질문하기"
 msgid "Assign {roleTargetName}?"
 msgstr "{roleTargetName}님에게 할당하시겠습니까?"
 
+#. js-lingui-id: 449JVv
+#: src/modules/settings/members/ManageMembersDropdownMenu.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "Assign Role"
+msgstr ""
+
 #. js-lingui-id: gJL5Xx
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
 msgid "Assign roles to specify each agent's access permissions"
@@ -1625,6 +1632,7 @@ msgstr "스캔이 불가능합니까?"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/action-menu/actions/record-actions/constants/RecordPageLayoutActionsConfig.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
@@ -1944,6 +1952,11 @@ msgstr "컴팩트 보기"
 msgid "Companies"
 msgstr "회사"
 
+#. js-lingui-id: bhYVxz
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Company logo"
+msgstr ""
+
 #. js-lingui-id: 2PsTzL
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
@@ -2145,6 +2158,7 @@ msgstr "이메일로 계속"
 
 #. js-lingui-id: oZyG4C
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithGoogle.tsx
+#: src/modules/auth/components/WelcomeLanding.tsx
 msgid "Continue with Google"
 msgstr "Google로 계속"
 
@@ -3492,6 +3506,11 @@ msgstr "항목 입력"
 msgid "Enter array of items or variable expression"
 msgstr "항목 배열 또는 변수 표현식을 입력하세요"
 
+#. js-lingui-id: g+QyR4
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Enter as guest"
+msgstr ""
+
 #. js-lingui-id: 9/30HU
 #: src/modules/settings/data-model/fields/forms/date/utils/getDisplayFormatSelectDescription.tsx
 msgid "Enter in <0>Unicode</0> format"
@@ -3546,6 +3565,11 @@ msgstr "사용자 ID 또는 이메일 주소 입력"
 #: src/modules/workflow/workflow-steps/workflow-actions/filter-action/components/WorkflowStepFilterValueInput.tsx
 msgid "Enter value"
 msgstr "값 입력"
+
+#. js-lingui-id: inqEED
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Entering as guest..."
+msgstr ""
 
 #. js-lingui-id: GpB8YV
 #: src/pages/settings/security/SettingsSecurity.tsx
@@ -3942,6 +3966,11 @@ msgstr "추가 크레딧 사용됨"
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobsTable.tsx
 msgid "Failed"
 msgstr "실패"
+
+#. js-lingui-id: tRyr7h
+#: src/pages/settings/SettingsWorkspaceMembers.tsx
+msgid "Failed to assign role"
+msgstr ""
 
 #. js-lingui-id: fsNGMi
 #: src/modules/metadata-error-handler/hooks/useMetadataErrorHandler.ts
@@ -4388,6 +4417,11 @@ msgstr "그룹"
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Group by"
 msgstr "그룹별"
+
+#. js-lingui-id: +XM6dz
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Guest credentials are not configured. Please provide VITE_GUEST_EMAIL and VITE_GUEST_PASSWORD."
+msgstr ""
 
 #. js-lingui-id: /Oqu/V
 #: src/pages/settings/ai/components/SettingsAgentHandoffForm.tsx
@@ -5213,6 +5247,11 @@ msgstr "더 로딩 중..."
 msgid "Loading retention configuration..."
 msgstr "보존 설정 로드 중..."
 
+#. js-lingui-id: c6+TwC
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "Loading roles..."
+msgstr ""
+
 #. js-lingui-id: Z3FXyt
 #: src/pages/settings/ai/components/SettingsAgentHandoffForm.tsx
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentEntityPickerDropdown.tsx
@@ -5708,10 +5747,10 @@ msgid "New Account"
 msgstr "새 계정"
 
 #. js-lingui-id: mJIA0/
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 msgid "New Agent"
 msgstr "새로운 에이전트"
 
@@ -5981,8 +6020,8 @@ msgstr "사용 가능한 메트릭스 데이터 없음"
 
 #. js-lingui-id: UWZZdQ
 #: src/pages/settings/ai/forms/components/SettingsAIAgentForm.tsx
-#: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 #: src/pages/settings/ai/components/SettingsAIRouterSettings.tsx
+#: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "No models available. Please configure AI models in your workspace settings."
 msgstr "사용 가능한 모델이 없습니다. 작업 공간 설정에서 AI 모델을 구성해주세요."
 
@@ -6028,6 +6067,11 @@ msgstr "결과 없음"
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentWorkspaceMemberPickerDropdownContent.tsx
 msgid "No Results"
 msgstr "결과 없음"
+
+#. js-lingui-id: kTx8R9
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "No roles available. Please create a role first in the Roles section."
+msgstr ""
 
 #. js-lingui-id: 9mcJ/7
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
@@ -7698,8 +7742,8 @@ msgstr "데이터베이스 설정 중..."
 
 #. js-lingui-id: Tz0i8g
 #: src/pages/settings/data-model/SettingsObjectDetailPage.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/modules/sign-in-background-mock/components/SignInAppNavigationDrawerMock.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsSection.tsx
 #: src/modules/settings/roles/role/components/SettingsRole.tsx
@@ -8695,6 +8739,11 @@ msgstr "우크라이나어"
 msgid "Unable to Reach Back-end"
 msgstr "백엔드에 연결할 수 없습니다"
 
+#. js-lingui-id: 4j1sqh
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Unable to sign in with the guest credentials."
+msgstr ""
+
 #. js-lingui-id: wSXm5S
 #: src/pages/settings/data-model/SettingsObjectIndexTable.tsx
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIsUniqueForm.tsx
@@ -9199,8 +9248,8 @@ msgstr "Workflows"
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldConfigure.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 #: src/pages/settings/applications/SettingsApplicationDetails.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/modules/sign-in-background-mock/components/SignInAppNavigationDrawerMock.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsSection.tsx
 #: src/modules/settings/roles/role-permissions/object-level-permissions/object-form/components/SettingsRolePermissionsObjectLevelObjectForm.tsx
@@ -9354,6 +9403,11 @@ msgstr "이 위젯을 볼 권한이 없습니다"
 #: src/modules/billing/components/SettingsBillingSubscriptionInfo.tsx
 msgid "You have scheduled a metered tier change. Do you want to cancel it?"
 msgstr "계획된 계측된 계층 변경이 있습니다. 취소하시겠습니까?"
+
+#. js-lingui-id: Jn96oQ
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "You will access the workspace hosted at {REACT_APP_SERVER_BASE_URL}."
+msgstr ""
 
 #. js-lingui-id: z8eKS7
 #: src/modules/billing/hooks/useBillingWording.ts

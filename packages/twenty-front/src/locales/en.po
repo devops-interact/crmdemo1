@@ -825,9 +825,9 @@ msgid "Aggregate"
 msgstr "Aggregate"
 
 #. js-lingui-id: jsQZMk
+#: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAI.tsx
 #: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/utils/getActionHeaderTypeOrThrow.ts
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/modules/command-menu/pages/workflow/action/components/CommandMenuWorkflowSelectAction.tsx
@@ -1234,6 +1234,13 @@ msgstr "Ask AI"
 msgid "Assign {roleTargetName}?"
 msgstr "Assign {roleTargetName}?"
 
+#. js-lingui-id: 449JVv
+#: src/modules/settings/members/ManageMembersDropdownMenu.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "Assign Role"
+msgstr "Assign Role"
+
 #. js-lingui-id: gJL5Xx
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
 msgid "Assign roles to specify each agent's access permissions"
@@ -1620,6 +1627,7 @@ msgstr "Can't scan? Copy the"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/action-menu/actions/record-actions/constants/RecordPageLayoutActionsConfig.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
@@ -1939,6 +1947,11 @@ msgstr "Compact view"
 msgid "Companies"
 msgstr "Companies"
 
+#. js-lingui-id: bhYVxz
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Company logo"
+msgstr "Company logo"
+
 #. js-lingui-id: 2PsTzL
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
@@ -2140,6 +2153,7 @@ msgstr "Continue with Email"
 
 #. js-lingui-id: oZyG4C
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithGoogle.tsx
+#: src/modules/auth/components/WelcomeLanding.tsx
 msgid "Continue with Google"
 msgstr "Continue with Google"
 
@@ -3487,6 +3501,11 @@ msgstr "Enter an item"
 msgid "Enter array of items or variable expression"
 msgstr "Enter array of items or variable expression"
 
+#. js-lingui-id: g+QyR4
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Enter as guest"
+msgstr "Enter as guest"
+
 #. js-lingui-id: 9/30HU
 #: src/modules/settings/data-model/fields/forms/date/utils/getDisplayFormatSelectDescription.tsx
 msgid "Enter in <0>Unicode</0> format"
@@ -3541,6 +3560,11 @@ msgstr "Enter user ID or email address"
 #: src/modules/workflow/workflow-steps/workflow-actions/filter-action/components/WorkflowStepFilterValueInput.tsx
 msgid "Enter value"
 msgstr "Enter value"
+
+#. js-lingui-id: inqEED
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Entering as guest..."
+msgstr "Entering as guest..."
 
 #. js-lingui-id: GpB8YV
 #: src/pages/settings/security/SettingsSecurity.tsx
@@ -3937,6 +3961,11 @@ msgstr "Extra Credits Used"
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobsTable.tsx
 msgid "Failed"
 msgstr "Failed"
+
+#. js-lingui-id: tRyr7h
+#: src/pages/settings/SettingsWorkspaceMembers.tsx
+msgid "Failed to assign role"
+msgstr "Failed to assign role"
 
 #. js-lingui-id: fsNGMi
 #: src/modules/metadata-error-handler/hooks/useMetadataErrorHandler.ts
@@ -4383,6 +4412,11 @@ msgstr "Group"
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Group by"
 msgstr "Group by"
+
+#. js-lingui-id: +XM6dz
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Guest credentials are not configured. Please provide VITE_GUEST_EMAIL and VITE_GUEST_PASSWORD."
+msgstr "Guest credentials are not configured. Please provide VITE_GUEST_EMAIL and VITE_GUEST_PASSWORD."
 
 #. js-lingui-id: /Oqu/V
 #: src/pages/settings/ai/components/SettingsAgentHandoffForm.tsx
@@ -5208,6 +5242,11 @@ msgstr "Loading more..."
 msgid "Loading retention configuration..."
 msgstr "Loading retention configuration..."
 
+#. js-lingui-id: c6+TwC
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "Loading roles..."
+msgstr "Loading roles..."
+
 #. js-lingui-id: Z3FXyt
 #: src/pages/settings/ai/components/SettingsAgentHandoffForm.tsx
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentEntityPickerDropdown.tsx
@@ -5703,10 +5742,10 @@ msgid "New Account"
 msgstr "New Account"
 
 #. js-lingui-id: mJIA0/
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 msgid "New Agent"
 msgstr "New Agent"
 
@@ -5976,8 +6015,8 @@ msgstr "No metrics data available"
 
 #. js-lingui-id: UWZZdQ
 #: src/pages/settings/ai/forms/components/SettingsAIAgentForm.tsx
-#: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 #: src/pages/settings/ai/components/SettingsAIRouterSettings.tsx
+#: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "No models available. Please configure AI models in your workspace settings."
 msgstr "No models available. Please configure AI models in your workspace settings."
 
@@ -6023,6 +6062,11 @@ msgstr "No results"
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentWorkspaceMemberPickerDropdownContent.tsx
 msgid "No Results"
 msgstr "No Results"
+
+#. js-lingui-id: kTx8R9
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "No roles available. Please create a role first in the Roles section."
+msgstr "No roles available. Please create a role first in the Roles section."
 
 #. js-lingui-id: 9mcJ/7
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
@@ -7693,8 +7737,8 @@ msgstr "Setting up your database..."
 
 #. js-lingui-id: Tz0i8g
 #: src/pages/settings/data-model/SettingsObjectDetailPage.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/modules/sign-in-background-mock/components/SignInAppNavigationDrawerMock.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsSection.tsx
 #: src/modules/settings/roles/role/components/SettingsRole.tsx
@@ -8690,6 +8734,11 @@ msgstr "Ukrainian"
 msgid "Unable to Reach Back-end"
 msgstr "Unable to Reach Back-end"
 
+#. js-lingui-id: 4j1sqh
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Unable to sign in with the guest credentials."
+msgstr "Unable to sign in with the guest credentials."
+
 #. js-lingui-id: wSXm5S
 #: src/pages/settings/data-model/SettingsObjectIndexTable.tsx
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIsUniqueForm.tsx
@@ -9194,8 +9243,8 @@ msgstr "Workflows"
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldConfigure.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 #: src/pages/settings/applications/SettingsApplicationDetails.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/modules/sign-in-background-mock/components/SignInAppNavigationDrawerMock.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsSection.tsx
 #: src/modules/settings/roles/role-permissions/object-level-permissions/object-form/components/SettingsRolePermissionsObjectLevelObjectForm.tsx
@@ -9349,6 +9398,11 @@ msgstr "You do not have permission to view this widget"
 #: src/modules/billing/components/SettingsBillingSubscriptionInfo.tsx
 msgid "You have scheduled a metered tier change. Do you want to cancel it?"
 msgstr "You have scheduled a metered tier change. Do you want to cancel it?"
+
+#. js-lingui-id: Jn96oQ
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "You will access the workspace hosted at {REACT_APP_SERVER_BASE_URL}."
+msgstr "You will access the workspace hosted at {REACT_APP_SERVER_BASE_URL}."
 
 #. js-lingui-id: z8eKS7
 #: src/modules/billing/hooks/useBillingWording.ts

@@ -830,9 +830,9 @@ msgid "Aggregate"
 msgstr "Агрегат"
 
 #. js-lingui-id: jsQZMk
+#: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAI.tsx
 #: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/utils/getActionHeaderTypeOrThrow.ts
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/modules/command-menu/pages/workflow/action/components/CommandMenuWorkflowSelectAction.tsx
@@ -1239,6 +1239,13 @@ msgstr "Запитати AI"
 msgid "Assign {roleTargetName}?"
 msgstr "Призначити {roleTargetName}?"
 
+#. js-lingui-id: 449JVv
+#: src/modules/settings/members/ManageMembersDropdownMenu.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "Assign Role"
+msgstr ""
+
 #. js-lingui-id: gJL5Xx
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
 msgid "Assign roles to specify each agent's access permissions"
@@ -1625,6 +1632,7 @@ msgstr "Не можете сканувати? Скопіюйте"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/action-menu/actions/record-actions/constants/RecordPageLayoutActionsConfig.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
@@ -1944,6 +1952,11 @@ msgstr "Компактний вигляд"
 msgid "Companies"
 msgstr "Компанії"
 
+#. js-lingui-id: bhYVxz
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Company logo"
+msgstr ""
+
 #. js-lingui-id: 2PsTzL
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
@@ -2145,6 +2158,7 @@ msgstr "Продовжити з електронною поштою"
 
 #. js-lingui-id: oZyG4C
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithGoogle.tsx
+#: src/modules/auth/components/WelcomeLanding.tsx
 msgid "Continue with Google"
 msgstr "Продовжити з Google"
 
@@ -3492,6 +3506,11 @@ msgstr "Введіть елемент"
 msgid "Enter array of items or variable expression"
 msgstr "Введіть масив елементів або змінний вираз"
 
+#. js-lingui-id: g+QyR4
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Enter as guest"
+msgstr ""
+
 #. js-lingui-id: 9/30HU
 #: src/modules/settings/data-model/fields/forms/date/utils/getDisplayFormatSelectDescription.tsx
 msgid "Enter in <0>Unicode</0> format"
@@ -3546,6 +3565,11 @@ msgstr "Введіть ID користувача або електронну а�
 #: src/modules/workflow/workflow-steps/workflow-actions/filter-action/components/WorkflowStepFilterValueInput.tsx
 msgid "Enter value"
 msgstr "Введіть значення"
+
+#. js-lingui-id: inqEED
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Entering as guest..."
+msgstr ""
 
 #. js-lingui-id: GpB8YV
 #: src/pages/settings/security/SettingsSecurity.tsx
@@ -3942,6 +3966,11 @@ msgstr "Додаткові використані кредити"
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobsTable.tsx
 msgid "Failed"
 msgstr "Не вдалося"
+
+#. js-lingui-id: tRyr7h
+#: src/pages/settings/SettingsWorkspaceMembers.tsx
+msgid "Failed to assign role"
+msgstr ""
 
 #. js-lingui-id: fsNGMi
 #: src/modules/metadata-error-handler/hooks/useMetadataErrorHandler.ts
@@ -4388,6 +4417,11 @@ msgstr "Група"
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Group by"
 msgstr "Групувати за"
+
+#. js-lingui-id: +XM6dz
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Guest credentials are not configured. Please provide VITE_GUEST_EMAIL and VITE_GUEST_PASSWORD."
+msgstr ""
 
 #. js-lingui-id: /Oqu/V
 #: src/pages/settings/ai/components/SettingsAgentHandoffForm.tsx
@@ -5213,6 +5247,11 @@ msgstr "Завантаження ще..."
 msgid "Loading retention configuration..."
 msgstr "Завантаження конфігурації збереження..."
 
+#. js-lingui-id: c6+TwC
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "Loading roles..."
+msgstr ""
+
 #. js-lingui-id: Z3FXyt
 #: src/pages/settings/ai/components/SettingsAgentHandoffForm.tsx
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentEntityPickerDropdown.tsx
@@ -5708,10 +5747,10 @@ msgid "New Account"
 msgstr "Новий обліковий запис"
 
 #. js-lingui-id: mJIA0/
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 msgid "New Agent"
 msgstr "Новий агент"
 
@@ -5981,8 +6020,8 @@ msgstr "Дані метрик недоступні"
 
 #. js-lingui-id: UWZZdQ
 #: src/pages/settings/ai/forms/components/SettingsAIAgentForm.tsx
-#: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 #: src/pages/settings/ai/components/SettingsAIRouterSettings.tsx
+#: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
 msgid "No models available. Please configure AI models in your workspace settings."
 msgstr "Немає доступних моделей. Увімкніть конфігурацію моделей ШІ в налаштуваннях робочої області."
 
@@ -6028,6 +6067,11 @@ msgstr "Немає результатів"
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentWorkspaceMemberPickerDropdownContent.tsx
 msgid "No Results"
 msgstr "Немає результатів"
+
+#. js-lingui-id: kTx8R9
+#: src/modules/settings/members/AssignRoleToMemberModal.tsx
+msgid "No roles available. Please create a role first in the Roles section."
+msgstr ""
 
 #. js-lingui-id: 9mcJ/7
 #: src/modules/settings/roles/components/SettingsRolesList.tsx
@@ -7698,8 +7742,8 @@ msgstr "Налаштування вашої бази даних..."
 
 #. js-lingui-id: Tz0i8g
 #: src/pages/settings/data-model/SettingsObjectDetailPage.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/modules/sign-in-background-mock/components/SignInAppNavigationDrawerMock.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsSection.tsx
 #: src/modules/settings/roles/role/components/SettingsRole.tsx
@@ -8695,6 +8739,11 @@ msgstr "Українська"
 msgid "Unable to Reach Back-end"
 msgstr "Неможливо дістатися до бекенду"
 
+#. js-lingui-id: 4j1sqh
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "Unable to sign in with the guest credentials."
+msgstr ""
+
 #. js-lingui-id: wSXm5S
 #: src/pages/settings/data-model/SettingsObjectIndexTable.tsx
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIsUniqueForm.tsx
@@ -9199,8 +9248,8 @@ msgstr "Робочі процеси"
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldConfigure.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 #: src/pages/settings/applications/SettingsApplicationDetails.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
 #: src/modules/sign-in-background-mock/components/SignInAppNavigationDrawerMock.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsSection.tsx
 #: src/modules/settings/roles/role-permissions/object-level-permissions/object-form/components/SettingsRolePermissionsObjectLevelObjectForm.tsx
@@ -9354,6 +9403,11 @@ msgstr "Ви не маєте дозволу на перегляд цього в�
 #: src/modules/billing/components/SettingsBillingSubscriptionInfo.tsx
 msgid "You have scheduled a metered tier change. Do you want to cancel it?"
 msgstr "Ви запланували зміну тарифу з лічильником. Ви бажаєте скасувати її?"
+
+#. js-lingui-id: Jn96oQ
+#: src/modules/auth/components/WelcomeLanding.tsx
+msgid "You will access the workspace hosted at {REACT_APP_SERVER_BASE_URL}."
+msgstr ""
 
 #. js-lingui-id: z8eKS7
 #: src/modules/billing/hooks/useBillingWording.ts
